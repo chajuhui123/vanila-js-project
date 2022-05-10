@@ -9,3 +9,19 @@ export const request = async (nodeId) => {
     throw new Error(`오류가 발생하였습니다. ${e.message}`);
   }
 };
+
+export const loading_request = async ({
+  nodeId,
+  setLoading,
+  finishLoading,
+}) => {
+  try {
+    setLoading();
+    const nodes = await request(nodeId);
+    return nodes;
+  } catch (e) {
+    throw new Error(`무엇인가 잘못 되었습니다. ${e.message}`);
+  } finally {
+    finishLoading();
+  }
+};
