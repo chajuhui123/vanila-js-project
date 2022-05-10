@@ -12,7 +12,7 @@ export default function Loading({ $app, initialState }) {
   };
 
   this.render = () => {
-    this.$target.innerHTML = `<div class="content"><img src="./assets/nyan-cat.gif" width = "90%"/></div>`;
+    this.$target.innerHTML = `<div class="content"><img src=".../../assets/nyan-cat.gif" width = "90%"/></div>`;
     this.$target.style.display = this.state ? "block" : "none";
   };
 

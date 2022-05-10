@@ -17,7 +17,7 @@ export default function Nodes({ $app, initialState, onClick }) {
       .map((node) => {
         return `
       <div class="Node" data-node-id="${node.id}">
-        <img src="./assets/${node.type.toLowerCase()}.png"/>
+        <img src="../../assets/${node.type.toLowerCase()}.png"/>
         <div>${node.name}</div>
       </div>
       `;
@@ -27,7 +27,7 @@ export default function Nodes({ $app, initialState, onClick }) {
     this.$target.innerHTML = this.state.isRoot
       ? nodeTemplate
       : `<div class="Node">
-            <img src="./assets/prev.png"/>
+            <img src="../../assets/prev.png"/>
         </div>
         ${nodeTemplate}`;
   };
