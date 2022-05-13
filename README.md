@@ -26,4 +26,4 @@ cats album project with Vanlia JS 🍦
 
 ☑️ 캐싱 구현하기
 
-[] Breadcrumb 클릭하여 이전 path 로 돌아가기
+☑️ Breadcrumb 클릭하여 이전 path 로 돌아가기
