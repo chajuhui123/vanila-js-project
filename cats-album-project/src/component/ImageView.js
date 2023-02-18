@@ -1,6 +1,6 @@
 const IMAGE_PATH_PREFIX = "...";
 
-export default function ImageView({ $app, initialState, onClick }) {
+function ImageView({ $app, initialState, onClick }) {
   this.state = initialState;
   this.onClick = onClick;
 
@@ -23,3 +23,5 @@ export default function ImageView({ $app, initialState, onClick }) {
 
   this.render();
 }
+
+export default ImageView;

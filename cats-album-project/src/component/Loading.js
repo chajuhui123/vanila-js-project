@@ -1,4 +1,4 @@
-export default function Loading({ $app, initialState }) {
+function Loading({ $app, initialState }) {
   this.state = initialState;
 
   this.$target = document.createElement("div");
@@ -18,3 +18,5 @@ export default function Loading({ $app, initialState }) {
 
   this.render();
 }
+
+export default Loading;

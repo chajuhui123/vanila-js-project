@@ -1,7 +1,7 @@
 const API_END_POINT =
   "https://zl3m4qq0l9.execute-api.ap-northeast-2.amazonaws.com/dev";
 
-export const request = async (nodeId) => {
+const request = async (nodeId) => {
   try {
     const res = await fetch(`${API_END_POINT}/${nodeId ? nodeId : ""}`);
     if (!res.ok) throw new Error("서버의 상태를 확인해주세요.");
@@ -11,11 +11,7 @@ export const request = async (nodeId) => {
   }
 };
 
-export const loading_request = async ({
-  nodeId,
-  setLoading,
-  finishLoading,
-}) => {
+const loading_request = async ({ nodeId, setLoading, finishLoading }) => {
   try {
     setLoading();
     const nodes = await request(nodeId);
@@ -26,3 +22,5 @@ export const loading_request = async ({
     finishLoading();
   }
 };
+
+export { request, loading_request };

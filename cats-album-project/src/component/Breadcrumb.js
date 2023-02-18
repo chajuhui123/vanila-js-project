@@ -1,4 +1,4 @@
-export default function Breadcrumb({ $app, initialState: [], onClick }) {
+function Breadcrumb({ $app, initialState: [], onClick }) {
   this.state = initialState;
   this.onClick = onClick;
 
@@ -32,3 +32,5 @@ export default function Breadcrumb({ $app, initialState: [], onClick }) {
 
   this.render();
 }
+
+export default Breadcrumb;

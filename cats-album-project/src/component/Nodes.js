@@ -1,4 +1,4 @@
-export default function Nodes({ $app, initialState, onClick }) {
+function Nodes({ $app, initialState, onClick }) {
   this.state = initialState;
   this.onClick = onClick;
   this.onBackClick = onBackClick;
@@ -42,3 +42,5 @@ export default function Nodes({ $app, initialState, onClick }) {
 
   this.render();
 }
+
+export default Nodes;
