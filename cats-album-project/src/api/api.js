@@ -1,8 +1,8 @@
-const API_END_POINT = "";
+const BASE_URL = "";
 
 const request = async (nodeId) => {
   try {
-    const res = await fetch(`${API_END_POINT}/${nodeId ? nodeId : ""}`);
+    const res = await fetch(`${BASE_URL}/${nodeId ? nodeId : ""}`);
     if (!res.ok) throw new Error("서버의 상태를 확인해주세요.");
     return await res.json();
   } catch (e) {
