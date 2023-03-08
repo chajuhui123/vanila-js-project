@@ -45,6 +45,25 @@ body * {
   width: 100%;
 }
 
+.SearchResult .item .CatName p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  color: white;
+}
+
+.SearchHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 10px;
+}
+
+.RandomButton {
+  width: 60px;
+}
+
 .SearchInput {
   width: 100%;
   font-size: 40px;
@@ -58,6 +77,18 @@ body * {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  -webkit-animation: fadein 0.5s;
+  -o-animation: fadein 0.5s;
+}
+
+.ImageInfo.fade {
+  animation: fadeout 1s;
+  -moz-animation: fadeout 1s;
+  -webkit-animation: fadeout 1s;
+  -o-animation: fadeout 1s;
+  animation-fill-mode: forwards;
 }
 
 .ImageInfo .title {
@@ -84,7 +115,7 @@ body * {
   width: 100%;
 }
 
-/* 다크 모드 구현 */
+/* 2. 다크모드 관련 CSS */
 
 .dark {
   background-color: #000;
@@ -111,6 +142,7 @@ body.light .ImageInfo .content-wrapper {
     background-color: #000;
     color: white;
   }
+
   .ImageInfo .content-wrapper {
     background-color: #000;
     color: white;
@@ -122,14 +154,17 @@ body.light .ImageInfo .content-wrapper {
     background-color: white;
     color: #000;
   }
+
   .ImageInfo .content-wrapper {
     background-color: white;
     color: #000;
   }
 }
 
-/* 유저가 사용하는 디바이스의 가로 길이에 따라 검색결과의 row 당 column 갯수 변경 */
-/* 992px 이하: 3개, 768px 이하: 2개, 576px 이하: 1개 */
+/* 1. 화면 사이즈 별 컬럼 수 지정 CSS */
+/* 992px 이하: 3개 */
+/* 768px 이하: 2개 */
+/* 576px 이하: 1개 */
 
 @media (max-width: 992px) {
   .SearchResult {
@@ -141,7 +176,7 @@ body.light .ImageInfo .content-wrapper {
   .SearchResult {
     grid-template-columns: repeat(2, minmax(250px, 1fr));
   }
-  /* 가로 길이가 768 px 이하인 경우 모달의 가로 길이를 디바이스 만큼 늘림 */
+  /* 사이즈 768px 이하 경우 모달 사이즈 가로 길이에 맞게 구현 */
   .ImageInfo .content-wrapper {
     width: 100%;
   }
@@ -150,5 +185,87 @@ body.light .ImageInfo .content-wrapper {
 @media (max-width: 576px) {
   .SearchResult {
     grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+}
+
+/* 모달 페이드인 페이드아웃 */
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@-o-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
   }
 }
