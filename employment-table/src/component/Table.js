@@ -1,25 +1,4 @@
 function Table({ $app, initialState }) {
-  const DUMMYDATA = [
-    {
-      name: "name1",
-      title: "Designer",
-      email: "jade@grepp.co",
-      role: "Owner",
-    },
-    {
-      name: "name2",
-      title: "Front-End Developer",
-      email: "sabastian@grepp.co",
-      role: "Admin",
-    },
-    {
-      name: "name3",
-      title: "Director",
-      email: "antony@grepp.co",
-      role: "Owner",
-    },
-  ];
-
   this.state = initialState;
 
   this.$target = document.createElement("div");
@@ -27,31 +6,45 @@ function Table({ $app, initialState }) {
   this.$target.id = "table";
   $app.append(this.$target);
 
+  this.setState = (nextState) => {
+    this.state = nextState;
+    this.render();
+  };
+
   this.render = () => {
     const tableHead = `<thead>
-    <tr>
-        <th>name</th>
-        <th>title</th>
-        <th>email</th>
-        <th>role</th>
-      </tr>
-    </thead>`;
+      <tr>
+          <th>name</th>
+          <th>title</th>
+          <th>email</th>
+          <th>role</th>
+        </tr>
+      </thead>`;
 
-    const getBodyHTML = (data) => {
+    const getBodyHTML = () => {
       const body = [];
-      data.map((item) => {
+      const { tableData, perData, currentPage } = this.state;
+
+      const startDataIdx = (currentPage - 1) * perData;
+      const tableDataset = tableData.slice(
+        startDataIdx,
+        startDataIdx + perData
+      );
+
+      tableDataset.map((item) => {
+        const { name, title, email, role } = item;
         body.push(`<tr>
-            <td>${item.name}</td>
-            <td>${item.title}</td>
-            <td>${item.email}</td>
-            <td>${item.role}</td>
-          </tr>`);
+              <td>${name}</td>
+              <td>${title}</td>
+              <td>${email}</td>
+              <td>${role}</td>
+            </tr>`);
       });
-      console.log(body.join(""));
+
       return body.join("");
     };
 
-    const tableBody = `<tbody>${getBodyHTML(DUMMYDATA)}</tbody>`;
+    const tableBody = `<tbody>${getBodyHTML()}</tbody>`;
 
     this.$target.innerHTML = `<table>${tableHead}${tableBody}</table>`;
   };

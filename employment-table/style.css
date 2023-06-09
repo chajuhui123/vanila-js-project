@@ -1,0 +1,68 @@
+body {
+  padding: 50px 50px;
+  background-color: #f2f2f2;
+}
+
+#page_title {
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+  /* 테이블 내 글씨 가운데 정렬 */
+  text-align: center;
+}
+
+/* 테이블 제목 영역 배경 회색, 글씨는 bold 처리 */
+thead {
+  background-color: #dddddd;
+  font-weight: bold;
+}
+
+/* 테이블 바디 영역 짝수 번째 row에 대해 배경 회색 처리 */
+tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.area {
+  margin: 10px 0;
+}
+
+#dropdown {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#table {
+  padding: 10px 0;
+  font-size: 1rem;
+}
+
+#pagination {
+  padding: 10px 10px;
+  text-align: center;
+  background-color: white;
+}
+
+#pagination > button {
+  margin: 0 10px;
+  font-size: 1rem;
+  font-weight: 550;
+  border: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+button.arrow {
+  color: red;
+}
