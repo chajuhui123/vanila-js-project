@@ -1,35 +1,29 @@
 import ProductListPage from "./page/ProductListPage.js";
 import ProductDetailPage from "./page/ProductDetailPage.js";
+import CartPage from "./page/CartPage.js";
 
-class App {
-  constructor($body) {
-    this.$body = $body;
-    this.render();
-  }
+function App({ $target }) {
+  this.route = () => {
+    const { pathname } = location;
 
-  async render() {
-    const pageDiv = document.createElement("div");
-    const pathLi = location.pathname.split("/").filter((item) => item !== "");
+    $target.innerHTML = "";
 
-    if (pathLi.length === 1) {
-      pageDiv.setAttribute("class", "ProductListPage");
-      this.$body.appendChild(pageDiv);
-      const productListPage = new ProductListPage(pageDiv);
-      productListPage.render();
-    } else if (pathLi[1] === "products") {
-      console.log("products", pathLi[2]);
-      pageDiv.setAttribute("class", "ProductDetailPage");
-      this.$body.appendChild(pageDiv);
-      const productDetailPage = new ProductDetailPage(pageDiv, pathLi[2]);
-      productDetailPage.render();
-    } else if (pathLi[1] === "cart") {
-      console.log("cart");
-      pageDiv.setAttribute("class", "CartPage");
-      this.$body.appendChild(pageDiv);
-      // const productListPage = new ProductListPage(pageDiv);
-      // productListPage.render();
+    if (pathname === "/") {
+      new ProductListPage({ $target }).render();
+    } else if (pathname.indexOf("/products/") === 0) {
+      const [, , productId] = pathname.split("/");
+      new ProductDetailPage({
+        $target,
+        productId,
+      }).render();
+    } else if (pathname === "/cart") {
+      new CartPage({
+        $target,
+      }).render();
     }
-  }
+  };
+
+  this.route();
 }
 
 export default App;

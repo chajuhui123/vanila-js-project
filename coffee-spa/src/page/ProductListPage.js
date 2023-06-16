@@ -1,18 +1,29 @@
-import Title from "../app.component/Title.js";
 import ProductList from "../feature.component/product/ProductList.js";
+import { api } from "../api/api.js";
 
-class ProductListPage {
-  constructor($main) {
-    this.$main = $main;
-  }
+export default function ProductListPage({ $target }) {
+  const $page = document.createElement("div");
+  $page.className = "ProductListPage";
 
-  render() {
-    const title = new Title(this.$main, "상품목록");
-    const productList = new ProductList(this.$main);
+  $page.innerHTML = "<h1>상품 목록</h1>";
 
-    title.render();
-    productList.render();
-  }
+  const fetchProducts = async () => {
+    const products = await api.fetchProducts();
+    this.setState(products);
+  };
+
+  const productList = new ProductList({
+    $target: $page,
+    initialState: this.state,
+  });
+
+  fetchProducts();
+
+  this.setState = (nextState) => {
+    this.state = nextState;
+  };
+
+  this.render = () => {
+    $target.appendChild($page);
+  };
 }
-
-export default ProductListPage;
